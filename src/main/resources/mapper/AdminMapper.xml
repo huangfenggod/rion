@@ -4,7 +4,7 @@
 <mapper namespace="com.rion.mapper.AdminMapper">
 
     <select id="selectAll" resultType="com.rion.pojo.packageDetail">
-        select address , pid ,time , pay from rion1
+        select id,address , pid ,time , pay from rion1 order by time desc
 
     </select>
 

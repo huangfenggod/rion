@@ -16,7 +16,8 @@ public class Queryimpl implements Query {
 
     @Override
     public List<packageDetail> selectAll(int pageNum, int pageSize) {
-        PageHelper.offsetPage(pageNum,pageSize);
+//        PageHelper.offsetPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum,pageSize);
         List<packageDetail> packageDetails = adminMapper.selectAll();
         PageInfo<packageDetail> pageInfo = new PageInfo<>(packageDetails);
         return pageInfo.getList();

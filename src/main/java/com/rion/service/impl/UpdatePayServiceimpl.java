@@ -19,8 +19,8 @@ public class UpdatePayServiceimpl implements UpdatrePayService {
     public int updatePay(String address) {
 
         int i = packMapper.selectByAddress(address);
-        System.out.println(i);
-        if (i!=1){
+
+        if (i<1){
             return 0;
         }
         i= adminMapper.updatePay(address);

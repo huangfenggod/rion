@@ -18,10 +18,12 @@ public class PackageController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public ResponsCode insertAddress(@RequestParam("address") String address){
+        address =address.replace(",","").trim();
+
     int res= packService.insert(address);
     if (res==1){
 
-        return new ResponsCode<String>(200,"成功");
+        return new ResponsCode<String>(200,"提交成功");
     }else {return new ResponsCode<String>(0,"提交失败或重复");}
     }
 

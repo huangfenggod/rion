@@ -10,6 +10,7 @@ public class packageDetail {
     private Integer pid;
     private Date time;
     private int pay;
+    private int id;
 
 
 }
