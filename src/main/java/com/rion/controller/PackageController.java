@@ -47,10 +47,10 @@ public class PackageController {
     int res= packService.insert(address);
     if (res==1){
         Integer pid = packService.selectId(address);
-        if (uid!=null){
+        if (pid!=null){
             return new ResponsCode<>(200,"提交成功",new RecommendUrl("http://puyuanzj.com:8080/?uid="+pid));
         }else {
-            return new ResponsCode<>(200,"提交成功","推荐链接异常输入重新获取");
+            return new ResponsCode<>(0,"提交失败",null);
         }
     }else {return new ResponsCode<>(0,"提交失败或重复",null);}
     }
@@ -61,7 +61,7 @@ public class PackageController {
         if (id!=null){
             return new ResponsCode<>(200,"提交成功",new RecommendUrl("http://puyuanzj.com:8080/?uid="+id));
         }else {
-            return new ResponsCode<>(0,"没有钱包地址重新获取",null);
+            return new ResponsCode<>(0,"你还没有绑定过这个钱包地址",null);
         }
 
 

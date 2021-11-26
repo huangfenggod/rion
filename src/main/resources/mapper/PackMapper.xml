@@ -6,7 +6,7 @@
     insert into rion1 (address,pay,pid,time) values(#{address},#{pay},#{pid},#{time});
 </insert>
 <select id="selectByAddress" resultType="int">
-    select count(id) from rion1 where address = #{address} limit 1;
+    if exists(select 1 from rion1 where address = #{address}) return 1 else return 0
 
 </select>
 <select id="selectIdByAddress" resultType="java.lang.Integer">
@@ -15,7 +15,7 @@
 </select>
 
 <select id="selectHasId" resultType="int">
-    select count(id) from rion1 where id =#{uid}
+    if exists(select 1 from rion1 where id =#{uid}) return 1 else return 0
 
 </select>
 
