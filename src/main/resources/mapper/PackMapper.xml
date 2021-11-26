@@ -9,7 +9,14 @@
     select count(id) from rion1 where address = #{address} limit 1;
 
 </select>
+<select id="selectIdByAddress" resultType="java.lang.Integer">
+    select id from rion1 where address =#{address}
 
+</select>
 
+<select id="selectHasId" resultType="int">
+    select count(id) from rion1 where id =#{uid}
+
+</select>
 
 </mapper>

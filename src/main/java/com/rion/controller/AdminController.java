@@ -27,7 +27,7 @@ public class AdminController {
         @RequestMapping(value = "/getDetail")
         public ResponsCode getDetail(@RequestParam("pageNum")int pageNum, @RequestParam("pageSize") int pageSize){
                 List<packageDetail> detailList = query.selectAll(pageNum,pageSize);
-                return new ResponsCode<List<packageDetail>>(200,detailList);
+                return new ResponsCode<List<packageDetail>>(200,"成功",detailList);
         }
 
         @ResponseBody
@@ -36,9 +36,9 @@ public class AdminController {
 
                 int i = updatrePayService.updatePay(address);
                 if (i>0){
-                        return new ResponsCode<String>(200,address);
+                        return new ResponsCode<>(200,"成功",address);
                 }else {
-                        return new ResponsCode<String>(0,"修改失败");
+                        return new ResponsCode<String>(0,"修改失败",null);
                 }
 
 

@@ -11,5 +11,6 @@ public interface PackMapper {
     int insertByAddress(@Param("address") String address, @Param("time") Date time,@Param("pid") Integer pid,
                         @Param("pay") Integer pay);
     int selectByAddress(@Param("address") String address);
-
+    Integer selectIdByAddress(@Param("address") String address);
+    int selectHasId(@Param("uid") int id);
 }
