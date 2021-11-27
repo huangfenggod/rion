@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -54,11 +55,21 @@ public class AdminController {
 
         @ResponseBody
         @RequestMapping(value = "/getChildren")
-        public ResponsCode getChildren(@Param("address") String address){
+        public ResponsCode getChildren(@Param("address") String address,int pageSize,int pageNum){
                 List<packageDetail> children = query.getChildren(address);
                 if (children==null){
                         return new ResponsCode(0,"没有此钱包地址",null);
                 }else {
+                        List<packageDetail> childrenPage =new ArrayList<>();
+                        for(int i=(pageNum-1)*pageSize;i<pageNum*pageSize;i++){
+                                if (children.size()>i){
+                                        childrenPage.add(children.get(i));
+                                }else {
+                                        break;
+                                }
+                        }
+
+
                         return new ResponsCode(200,"查询成功",children);
                 }
 
