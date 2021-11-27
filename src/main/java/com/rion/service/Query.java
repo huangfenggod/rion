@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface Query {
     List<packageDetail> selectAll(int pageNum,int pageSize);
+    packageDetail selectByAddress(String address);
+    List<packageDetail> getChildren(String address);
+
 
 }

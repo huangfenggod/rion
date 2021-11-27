@@ -29,7 +29,6 @@ public class AdminController {
                 List<packageDetail> detailList = query.selectAll(pageNum,pageSize);
                 return new ResponsCode<List<packageDetail>>(200,"成功",detailList);
         }
-
         @ResponseBody
         @RequestMapping(value = "/update",method = RequestMethod.POST)
         public ResponsCode UpdatePay(@RequestParam("address") String address){
@@ -40,10 +39,32 @@ public class AdminController {
                 }else {
                         return new ResponsCode<String>(0,"修改失败",null);
                 }
+        }
 
+        @ResponseBody
+        @RequestMapping(value = "/checkAddress")
+        public ResponsCode checkByAddress(@Param("address") String address){
+                packageDetail packageDetail = query.selectByAddress(address);
+                if (packageDetail!=null){
+                        return new ResponsCode(200,"查询成功",packageDetail);
+                }else {
+                        return new ResponsCode(0,"没有此钱包地址",null);
+                }
+        }
+
+        @ResponseBody
+        @RequestMapping(value = "/getChildren")
+        public ResponsCode getChildren(@Param("address") String address){
+                List<packageDetail> children = query.getChildren(address);
+                if (children==null){
+                        return new ResponsCode(0,"没有此钱包地址",null);
+                }else {
+                        return new ResponsCode(200,"查询成功",children);
+                }
 
 
         }
+
 
 
 

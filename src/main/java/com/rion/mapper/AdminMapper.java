@@ -12,5 +12,5 @@ public interface AdminMapper {
 
    public List<packageDetail> selectAll();
    public int updatePay(@Param("address") String address);
-
+   public packageDetail selectByAddress(@Param("address") String address);
 }

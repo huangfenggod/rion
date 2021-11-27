@@ -14,4 +14,8 @@
 
 </update>
 
+    <select id="selectByAddress" parameterType="String" resultType="com.rion.pojo.packageDetail">
+        select * from rion1 where address=#{address}
+    </select>
+
 </mapper>
