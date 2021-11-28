@@ -17,5 +17,8 @@
     <select id="selectByAddress" parameterType="String" resultType="com.rion.pojo.packageDetail">
         select * from rion1 where address=#{address}
     </select>
+    <select id="countPidById" parameterType="int" resultType="int">
+        select count(*) from rion1 where pid=#{id}
+    </select>
 
 </mapper>

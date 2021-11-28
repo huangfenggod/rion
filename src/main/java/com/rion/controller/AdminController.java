@@ -1,5 +1,6 @@
 package com.rion.controller;
 
+import com.rion.pojo.PackageDetailChildren;
 import com.rion.responseUtils.ResponsCode;
 import com.rion.service.Query;
 import com.rion.service.UpdatrePayService;
@@ -57,6 +58,8 @@ public class AdminController {
         @RequestMapping(value = "/getChildren")
         public ResponsCode getChildren(@Param("address") String address,int pageSize,int pageNum){
                 List<packageDetail> children = query.getChildren(address);
+
+
                 if (children==null){
                         return new ResponsCode(0,"没有此钱包地址",null);
                 }else {
@@ -68,9 +71,12 @@ public class AdminController {
                                         break;
                                 }
                         }
+                        int lengthOnly=query.countPidByAddress(address);
+                        int lengthAll=children.size();
 
 
-                        return new ResponsCode(200,"查询成功",children);
+                        return new ResponsCode(200,"查询成功",new PackageDetailChildren(childrenPage,lengthOnly
+                        ,lengthAll-1));
                 }
 
 

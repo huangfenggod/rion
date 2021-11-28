@@ -8,6 +8,6 @@ public interface Query {
     List<packageDetail> selectAll(int pageNum,int pageSize);
     packageDetail selectByAddress(String address);
     List<packageDetail> getChildren(String address);
-
+    int countPidByAddress(String address);
 
 }

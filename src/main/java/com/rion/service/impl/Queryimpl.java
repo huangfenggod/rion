@@ -43,4 +43,13 @@ public class Queryimpl implements Query {
         Recursive recursive = new Recursive(id, selectAll);
         return recursive.getChildren();
     }
+
+    @Override
+    public int countPidByAddress(String address) {
+        Integer integer = packMapper.selectIdByAddress(address);
+        if (integer==null){
+            return 0;
+        }
+        return adminMapper.countPidById(integer);
+    }
 }
